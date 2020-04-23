@@ -2,8 +2,7 @@ html {
   background: #9a9a9a;
 }
 
-form ul {
-  list-style: none;
+#uploadForm {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -12,9 +11,64 @@ form ul {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
-form ul li {
+#uploadForm ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+#uploadForm ul li {
   margin-bottom: 20px;
+}
+
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+.container #removeFiles .submit {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.container ul {
+  margin: 0 0 50px;
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.container .item {
+  display: flex;
+  width: 23%;
+  flex-direction: column;
+  border: 1px solid cornflowerblue;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+.container .item img {
+  width: 100%;
+  height: 190px;
+}
+.container .item label {
+  display: flex;
+  cursor: pointer;
+}
+.container .item label input {
+  cursor: pointer;
+  margin-left: 0;
+}
+
+#home {
+  display: block;
+  text-align: center;
 }
 
 /*# sourceMappingURL=styles.css.map */
