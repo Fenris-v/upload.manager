@@ -1,5 +1,7 @@
-<?php $uploadPath = $_SERVER['DOCUMENT_ROOT'] . '/upload/'; ?>
-
+<?php
+$uploadPath = $_SERVER['DOCUMENT_ROOT'] . '/upload/';
+require $_SERVER['DOCUMENT_ROOT'] . '/include/getFilesProp.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
