@@ -7,7 +7,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php'; ?>
             <ul>
                 <?php
                 if (
-                    file_exists($uploadPath) &&
+                    file_exists(UPLOAD_PATH) &&
                     count(scandir($_SERVER['DOCUMENT_ROOT'] . '/upload')) > 2
                 ) {
                     $images = scandir($_SERVER['DOCUMENT_ROOT'] . '/upload');
@@ -16,9 +16,9 @@ require $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php'; ?>
                         if ($image != '.' && $image != '..') : ?>
                             <li class="item">
                                 <img src="<?= '/upload/' . $image ?>" alt="">
-                                <p><?= $image ?></p>
-                                <p>Size: <?= filesProp\getSize($uploadPath . $image) ?></p>
-                                <p>Upload time: <?= filesProp\getTimeUpload($uploadPath . $image) ?></p>
+                                <p class="imageName"><?= $image ?></p>
+                                <p>Size: <?= filesProp\getSize(UPLOAD_PATH . $image) ?></p>
+                                <p>Upload time: <?= filesProp\getTimeUpload(UPLOAD_PATH . $image) ?></p>
                                 <label>
                                     <input name="check" type="checkbox">Check for delete
                                 </label>

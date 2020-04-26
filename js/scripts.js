@@ -1,11 +1,10 @@
 $(document).ready(() => {
-
     let files;
     $('#images').on('change', () => {
         files = $('#images').prop('files');
     });
 
-    $('#upload').on('click', (e) => {
+    $('#uploadForm').on('submit', (e) => {
         e.preventDefault();
 
         if (typeof files === 'undefined') {
@@ -27,20 +26,24 @@ $(document).ready(() => {
             data: data,
             processData: false,
             contentType: false,
+            success: (json) => {
+                $('.log').html(json);
+            },
             error: (jqXHR, textStatus) => {
                 console.error(textStatus, jqXHR);
             }
         });
     });
 
-    $('#remove').on('click', (e) => {
+    let removeForm = $('#removeFiles');
+    removeForm.on('submit', (e) => {
         e.preventDefault();
 
-        let checkedItems = $('.item input[type=checkbox]:checked');
+        let checkedItems = removeForm.find('.item input[type=checkbox]:checked');
         let listItems = {};
 
         checkedItems.each((key, item) => {
-            listItems['item' + key] = $(item).parents('.item').children('p').text();
+            listItems['item' + key] = $(item).parents('.item').children('.imageName').text();
         });
 
         $.ajax({
