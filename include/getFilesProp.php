@@ -29,5 +29,5 @@ function getSize($file): string
  */
 function getTimeUpload($file): string
 {
-    return date("d F Y H:i:s.", filectime($file));
+    return date("d.m.Y H:i:s.", filectime($file));
 }

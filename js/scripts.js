@@ -17,7 +17,7 @@ $(document).ready(() => {
             data.append(key, item);
         });
 
-        data.append('upload', 1);
+        data.append('upload', '1');
 
         $.ajax({
             url: '/include/upload.php',
@@ -43,8 +43,9 @@ $(document).ready(() => {
         let listItems = {};
 
         checkedItems.each((key, item) => {
-            listItems['item' + key] = $(item).parents('.item').children('.imageName').text();
+            listItems['item' + key] = $(item).parents('.item').find('.imageName span').text();
         });
+        console.log(listItems);
 
         $.ajax({
             type: 'POST',

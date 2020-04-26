@@ -3,7 +3,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/include/getFilesProp.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/include/const.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>

@@ -6,21 +6,17 @@ require $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php'; ?>
         <form id="removeFiles">
             <ul>
                 <?php
-                if (
-                    file_exists(UPLOAD_PATH) &&
-                    count(scandir($_SERVER['DOCUMENT_ROOT'] . '/upload')) > 2
-                ) {
-                    $images = scandir($_SERVER['DOCUMENT_ROOT'] . '/upload');
-                    asort($images);
+                $images = array_diff(scandir($_SERVER['DOCUMENT_ROOT'] . '/upload'), ['.', '..']);
+                if (file_exists(UPLOAD_PATH) && count($images) > 0) {
                     foreach ($images as $image) :
-                        if ($image != '.' && $image != '..') : ?>
+                        if (!in_array($image, ['.', '..'])) : ?>
                             <li class="item">
                                 <img src="<?= '/upload/' . $image ?>" alt="">
-                                <p class="imageName"><?= $image ?></p>
-                                <p>Size: <?= filesProp\getSize(UPLOAD_PATH . $image) ?></p>
-                                <p>Upload time: <?= filesProp\getTimeUpload(UPLOAD_PATH . $image) ?></p>
+                                <p class="imageName">Имя файла: <span><?= $image ?></span></p>
+                                <p>Размер файла: <?= filesProp\getSize(UPLOAD_PATH . $image) ?></p>
+                                <p>Время загрузки: <?= filesProp\getTimeUpload(UPLOAD_PATH . $image) ?></p>
                                 <label>
-                                    <input name="check" type="checkbox">Check for delete
+                                    <input name="check" type="checkbox">Отметить для удаления
                                 </label>
                             </li>
                         <?php
@@ -29,11 +25,11 @@ require $_SERVER['DOCUMENT_ROOT'] . '/templates/header.php'; ?>
                 } ?>
             </ul>
             <div class="submit">
-                <input id="remove" type="submit" value="remove">
+                <input id="remove" type="submit" value="Удалить выделенные">
             </div>
         </form>
     </div>
-    <a id="home" href="/">go home</a>
+    <a id="home" href="/">Главная</a>
 
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . '/templates/footer.html';
